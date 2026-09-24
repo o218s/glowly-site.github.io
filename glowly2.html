@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Glowly — Skincare para todos</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            color: #24483b;
+            background: #ffffff;
+        }
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        nav {
+            height: 78px;
+            padding: 0 8%;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            background: #ffffff;
+
+            border-bottom: 1px solid #e5f2ec;
+
+            position: relative;
+            z-index: 10;
+        }
+
+        .logo {
+            font-size: 29px;
+            font-weight: 700;
+            color: #e85d91;
+            letter-spacing: -1px;
+        }
+
+        .menu {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: #355c4d;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .menu a:hover {
+            color: #e85d91;
+        }
+
+        /* BOTÃO LOGIN */
+
+        .login-button {
+            text-decoration: none;
+
+            padding: 10px 21px;
+
+            border: 2px solid #e85d91;
+            border-radius: 25px;
+
+            color: #e85d91;
+
+            font-weight: 600;
+
+            transition: 0.3s;
+        }
+
+        .login-button:hover {
+            background: #e85d91;
+            color: white;
+        }
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            min-height: calc(100vh - 78px);
+
+            padding: 70px 8%;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 70px;
+
+            background:
+                radial-gradient(
+                    circle at 85% 20%,
+                    #d9f4e8 0,
+                    transparent 32%
+                ),
+
+                radial-gradient(
+                    circle at 15% 80%,
+                    #fbd8e6 0,
+                    transparent 32%
+                ),
+
+                #fffafb;
+
+            overflow: hidden;
+        }
+
+        .hero-text {
+            max-width: 620px;
+        }
+
+        .tag {
+            display: inline-block;
+
+            padding: 9px 18px;
+
+            border-radius: 30px;
+
+            background: #e0f4e9;
+
+            color: #34765c;
+
+            font-weight: 600;
+
+            margin-bottom: 22px;
+        }
+
+        .hero h1 {
+            font-size: clamp(45px, 6vw, 76px);
+
+            line-height: 1.02;
+
+            margin-bottom: 25px;
+
+            color: #24483b;
+
+            letter-spacing: -2px;
+        }
+
+        .hero h1 span {
+            color: #e85d91;
+        }
+
+        .hero p {
+            font-size: 19px;
+
+            line-height: 1.7;
+
+            color: #577268;
+
+            margin-bottom: 32px;
+
+            max-width: 560px;
+        }
+
+        /* BOTÃO PRINCIPAL */
+
+        .button {
+            display: inline-block;
+
+            padding: 15px 28px;
+
+            border-radius: 30px;
+
+            background: #e85d91;
+
+            color: white;
+
+            text-decoration: none;
+
+            font-weight: 700;
+
+            box-shadow:
+                0 8px 20px rgba(232, 93, 145, 0.25);
+
+            transition: 0.3s;
+        }
+
+        .button:hover {
+            transform: translateY(-3px);
+
+            background: #d94c80;
+        }
+
+        /* =========================
+           ÁREA PARA DESIGN PRÓPRIO
+        ========================= */
+
+        .hero-visual {
+            width: 430px;
+            height: 430px;
+
+            border-radius: 45% 55% 50% 50%;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #f8c9dc,
+                    #d2f0e1
+                );
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            position: relative;
+
+            box-shadow:
+                0 25px 60px rgba(59, 115, 92, 0.12);
+        }
+
+        .visual-content {
+            text-align: center;
+
+            color: #3c6d59;
+
+            padding: 30px;
+        }
+
+        .visual-content .symbol {
+            font-size: 70px;
+
+            margin-bottom: 15px;
+        }
+
+        .visual-content h3 {
+            font-size: 22px;
+
+            margin-bottom: 8px;
+        }
+
+        .visual-content p {
+            font-size: 14px;
+
+            color: #537565;
+
+            line-height: 1.5;
+        }
+
+        /*
+            Este espaço pode ser substituído
+            pelo teu próprio design/imagem.
+        */
+
+        /* =========================
+           BENEFÍCIOS
+        ========================= */
+
+        .benefits {
+            padding: 90px 8%;
+
+            text-align: center;
+
+            background: #ffffff;
+        }
+
+        .benefits h2 {
+            font-size: 38px;
+
+            margin-bottom: 50px;
+
+            color: #24483b;
+        }
+
+        .cards {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 25px;
+        }
+
+        .card {
+            padding: 38px 28px;
+
+            border-radius: 25px;
+
+            background: #f8fcfa;
+
+            border: 1px solid #e1f0e8;
+
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-7px);
+
+            border-color: #f0b6cc;
+        }
+
+        .card .icon {
+            font-size: 42px;
+
+            margin-bottom: 18px;
+        }
+
+        .card h3 {
+            margin-bottom: 12px;
+
+            color: #315c4c;
+        }
+
+        .card p {
+            color: #698177;
+
+            line-height: 1.6;
+        }
+
+        /* =========================
+           CTA
+        ========================= */
+
+        .cta {
+            padding: 90px 20px;
+
+            text-align: center;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #f6bfd5,
+                    #c9eddd
+                );
+        }
+
+        .cta h2 {
+            font-size: 42px;
+
+            margin-bottom: 15px;
+
+            color: #24483b;
+        }
+
+        .cta p {
+            margin-bottom: 28px;
+
+            color: #4d6b5d;
+
+            font-size: 17px;
+        }
+
+        .cta .button {
+            background: #34765c;
+        }
+
+        .cta .button:hover {
+            background: #285e49;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            padding: 27px;
+
+            text-align: center;
+
+            background: #24483b;
+
+            color: #e8f7ef;
+        }
+
+        /* =========================
+           RESPONSIVO
+        ========================= */
+
+        @media (max-width: 900px) {
+
+            nav {
+                padding: 0 5%;
+            }
+
+            .menu {
+                gap: 15px;
+            }
+
+            .hero {
+                flex-direction: column;
+
+                text-align: center;
+
+                padding: 60px 5%;
+            }
+
+            .hero p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-visual {
+                width: 320px;
+                height: 320px;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            nav {
+                height: auto;
+
+                padding: 20px 5%;
+
+                flex-wrap: wrap;
+
+                gap: 15px;
+            }
+
+            .menu {
+                order: 3;
+
+                width: 100%;
+
+                justify-content: center;
+
+                gap: 18px;
+
+                font-size: 14px;
+            }
+
+            .hero {
+                min-height: auto;
+
+                padding-top: 55px;
+                padding-bottom: 70px;
+            }
+
+            .hero h1 {
+                font-size: 48px;
+            }
+
+            .hero-visual {
+                width: 270px;
+                height: 270px;
+            }
+
+            .visual-content .symbol {
+                font-size: 55px;
+            }
+
+            .benefits h2 {
+                font-size: 32px;
+            }
+
+            .cta h2 {
+                font-size: 34px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================
+         NAVEGAÇÃO
+    ========================== -->
+
+    <nav>
+
+        <div class="logo">
+            glowly ✨
+        </div>
+
+        <ul class="menu">
+
+            <li>
+                <a href="#">Início</a>
+            </li>
+
+            <li>
+                <a href="#beneficios">
+                    Benefícios
+                </a>
+            </li>
+
+            <li>
+                <a href="#sobre">
+                    Sobre nós
+                </a>
+            </li>
+
+            <li>
+                <a href="#contactos">
+                    Contactos
+                </a>
+            </li>
+
+            <li>
+                <a href="#" class="login-button">
+                    Entrar
+                </a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+    <main>
+
+        <!-- =========================
+             HERO
+        ========================== -->
+
+        <section class="hero">
+
+            <div class="hero-text">
+
+                <span class="tag">
+                    ✨ O teu glow começa aqui
+                </span>
+
+                <h1>
+                    Olá, <span>Glowly!</span>
+                </h1>
+
+                <p>
+                    Bem-vindo à Glowly — um espaço pensado
+                    para celebrar todos os tipos de pele,
+                    diferentes rotinas e a beleza única
+                    de cada pessoa.
+                </p>
+
+                <a
+                    href="#beneficios"
+                    class="button"
+                >
+                    Descobrir a Glowly →
+                </a>
+
+            </div>
+
+
+            <!--
+                ÁREA RESERVADA PARA O TEU DESIGN
+
+                Podes substituir todo este bloco
+                pela imagem, ilustração ou componente
+                que quiseres.
+            -->
+
+            <div class="hero-visual">
+
+                <div class="visual-content">
+
+                    <div class="symbol">
+                        ✨
+                    </div>
+
+                    <h3>
+                        O teu espaço.
+                    </h3>
+
+                    <p>
+                        Aqui podes colocar
+                        o teu próprio design.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             BENEFÍCIOS
+        ========================== -->
+
+        <section
+            class="benefits"
+            id="beneficios"
+        >
+
+            <h2>
+                Skincare para todos 💚
+            </h2>
+
+            <div class="cards">
+
+                <div class="card">
+
+                    <div class="icon">
+                        🌿
+                    </div>
+
+                    <h3>
+                        Para cada pessoa
+                    </h3>
+
+                    <p>
+                        Diferentes peles, diferentes
+                        necessidades e diferentes
+                        formas de cuidar de nós.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <div class="icon">
+                        💧
+                    </div>
+
+                    <h3>
+                        Cuidado diário
+                    </h3>
+
+                    <p>
+                        Pequenos momentos de cuidado
+                        podem fazer parte de qualquer
+                        rotina.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <div class="icon">
+                        ✨
+                    </div>
+
+                    <h3>
+                        O teu glow
+                    </h3>
+
+                    <p>
+                        Porque a tua pele não precisa
+                        de seguir padrões. O teu glow
+                        é só teu.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             CTA
+        ========================== -->
+
+        <section
+            class="cta"
+            id="sobre"
+        >
+
+            <h2>
+                Pronto para começar?
+            </h2>
+
+            <p>
+                Descobre uma nova forma de cuidar
+                da tua pele, ao teu ritmo.
+            </p>
+
+            <a
+                href="#"
+                class="button"
+            >
+                Explorar Glowly ✨
+            </a>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer id="contactos">
+
+        © 2026 Glowly · Skincare para todos 💗💚
+
+    </footer>
+
+</body>
+</html>
